@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "browser-security-project",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acflores-cmu-F24/browser-security-project.git"
+  },
+  "author": "celina cywinska, andrew flores",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acflores-cmu-F24/browser-security-project/issues"
+  },
+  "homepage": "https://github.com/acflores-cmu-F24/browser-security-project#readme",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
