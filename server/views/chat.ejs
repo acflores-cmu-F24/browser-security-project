@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Browser Security Chat Room</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/output.css" rel="stylesheet" href="/css/input.css">
+</head>
+
+<body>
+    <div class="w-full flex flex-col h-svh max-h-svh sm:flex-row">
+        <div class="bg-gray-300 flex flex-col flex-1 overflow-auto justify-center items-center">
+            <div class="flex flex-row p-4 mb-2 mt-1 w-[95%]">
+                <div class="bg-[#26B7D3] flex-1 text-white font-bold rounded-lg p-4 mr-1">
+                    Browser Security Chat Room
+                </div>
+                <button
+                    class=" rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 border-2 bg-white text-black  hover:bg-[#accfe0] hover:border-[#accfe0]">
+                    Log out
+                </button>
+            </div>
+            <div class="flex flex-col mb-3 items-center bg-white w-[95%] h-[95%] rounded-lg">
+                <div class="flex flex-col items-center bg-white w-[95%] h-[95%] rounded-lg">
+                    <%- include('./chat/chatBox') -%>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

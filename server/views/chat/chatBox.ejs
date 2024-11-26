@@ -1,0 +1,30 @@
+<div class="flex flex-col w-[95%] h-[95%] ">
+    <div id="message-box" class="flex-1 mb-2 overflow-y-scroll">
+        <div class="flex flex-col gap-2 xs:w-full md:w-[100%] justify-center">
+            <% if (messages && messages.length> 0) { %>
+                <% messages.forEach(function(message) { %>
+                    <%- include('message', { sender: message.sender, message: message.content, isSelf:
+                        message.sender==currentUser }) %>
+                        <% }); %>
+                            <% } else { %>
+                                <div id="noMessageWarning" class="bg-gray-100 rounded-lg p-4 text-center mt-4">
+                                    <span class="text-gray-500">No Messages Yet</span>
+                                </div>
+                                <% } %>
+        </div>
+    </div>
+    <div class="flex flex-col">
+        <form id="messageForm" class="flex flex-col">
+            <input id="messageInput" class="rounded-lg border-2 border-gray-300 p-2 h-10" type="text" name="message"
+                placeholder="Type here..." required />
+            <div class="flex flex-row items-center justify-between gap-2 mt-2">
+                <button type="submit" class="flex-1">
+                    <div
+                        class="flex w-full justify-center rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 border-2 bg-[#26B7D3] text-white border-[#26B7D3] hover:bg-[#1296b0]">
+                        Post
+                    </div>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
