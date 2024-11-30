@@ -21,9 +21,11 @@
   "homepage": "https://github.com/acflores-cmu-F24/browser-security-project#readme",
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "mongoose": "^8.8.3"
   },
   "devDependencies": {
+    "nodemon": "^3.1.7",
     "tailwindcss": "^3.4.15"
   }
 }
