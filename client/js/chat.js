@@ -3,7 +3,7 @@ const logOutButton = document.getElementById('logout-button')
 const postButton = document.getElementById('post-button')
 const messageInput = document.getElementById('messageInput')
 
-var socket 
+var socket
 socket = io()
 
 document.addEventListener('DOMContentLoaded', renderChatRoom)
@@ -27,7 +27,7 @@ function renderChatRoom() {
     function renderMessage(chat) {
         const messageElement = document.createElement('div')
         //messageElement.classList.add('message')
-        
+
         const senderElement = document.createElement('div')
         //senderElement.classList.add('sender')
         senderElement.textContent = `${chat.sender}`
@@ -50,9 +50,9 @@ function renderChatRoom() {
         messageElement.appendChild(textElement)
     }
 
-    async () =>  {
+    async () => {
         try {
-            const response = await fetch(`/chats`)
+            const response = await fetch('/chats')
             if (!response.ok) {
                 throw new Error(`Error retrieving messages! status: ${response.status}`)
             }
@@ -71,29 +71,29 @@ function renderChatRoom() {
         const text = messageInput.value
         const timestamp = new Date().toISOString()
         //const currentUser = usersList.find((user) => user.username === username)
-        
+
         try {
             const response = await fetch('/chats', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    sender: sender.value,
-                    text: text.value,
-                    timestamp: timestamp.value
+                    sender: sender,
+                    text: text,
+                    timestamp: timestamp
                 })
             })
             if (!response.ok) {
                 throw new Error(`Error persisting message. status: ${response.status}`)
             }
             // TODO: Do I need to .value the text and timestamp in the socket message? 
-            socket.emit('newChat', 
+            socket.emit('newChat',
                 {
                     sender: sender.toString(),
                     text: text,
                     timestamp: timestamp
                 });
             messageInput.value = ''
-        } catch(error) {
+        } catch (error) {
             console.error('Message post error:', error)
         }
     })
@@ -103,7 +103,7 @@ function renderChatRoom() {
     logOutButton.addEventListener('click', async () => {
         try {
             //let username = sessionStorage.getItem('username')
-            let username =  "SCOOBY"
+            let username = "SCOOBY"
             if (username) {
                 sessionStorage.removeItem('username')
                 window.location.href = '/'

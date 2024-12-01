@@ -9,7 +9,7 @@ loginRouter.get('/', (req, res) => {
 
 loginRouter.post('/register', async (req, res) => {
     console.log(req.body)
-    let {username, password} = req.body
+    let { username, password } = req.body
     try {
         let user = new userModel({ username, password })
         await user.save()
@@ -20,21 +20,21 @@ loginRouter.post('/register', async (req, res) => {
 })
 
 loginRouter.post('/authenticate', async (req, res) => {
-    let {username, password} = req.body
+    let { username, password } = req.body
     try {
         const user = await userModel.findOne({ username })
-        if(user.password == password) {
+        if (user.password == password) {
             console.log(`user: ${user}`)
             //req.session.name = username
             console.log(`user authenticated`)
             //res.redirect('/chat')
-            res.status(200).json({message: 'Authenticated'})
+            res.status(200).json({ message: 'Authenticated' })
         } else {
-            res.status(400).json({message: 'wrong password'})
+            res.status(400).json({ message: 'wrong password' })
         }
     } catch (error) {
         res.status(500).json(error)
-    } 
+    }
 })
 
 export default loginRouter;
