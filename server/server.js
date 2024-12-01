@@ -11,6 +11,8 @@ const port = 3000;
 const app = express();
 const server = createServer(app);
 
+// configure express session cookie here
+
 (async () => {
   mongoose
   .connect(`mongodb://localhost:27017/browsersecurity`)

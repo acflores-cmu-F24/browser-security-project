@@ -12,7 +12,7 @@ loginRouter.post('/register', async (req, res) => {
         res.status(201).json(`User registered`)
     } catch (error) {
         return res.status(500).json(error)
-    } 
+    }
 })
 
 loginRouter.post('/authenticate', async (req, res) => {
