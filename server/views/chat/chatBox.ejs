@@ -3,7 +3,7 @@
         <div class="flex flex-col gap-2 xs:w-full md:w-[100%] justify-center">
             <% if (messages && messages.length> 0) { %>
                 <% messages.forEach(function(message) { %>
-                    <%- include('message', { sender: message.sender, message: message.content, isSelf:
+                    <%- include('message', { sender: message.sender, message: message.text, isSelf:
                         message.sender==currentUser }) %>
                         <% }); %>
                             <% } else { %>

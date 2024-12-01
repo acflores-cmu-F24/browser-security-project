@@ -2,9 +2,12 @@
     <div
         class="message <%= isSelf ? 'self-end bg-[rgb(255,180,24,0.45)]' : 'bg-gray-100 self-start' %> rounded-lg p-4 mb-4">
         <div class="message-header flex justify-between items-center mb-2">
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-4 flex-col">
                 <span class="message-sender font-bold px-3">
                     <%= sender %>
+                </span>
+                <span class="message-sender font-bold px-3">
+                    <%= message %>
                 </span>
             </div>
         </div>
