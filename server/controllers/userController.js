@@ -3,6 +3,10 @@ import userModel from '../models/userModel.js'
 
 const loginRouter = express.Router();
 
+loginRouter.get('/', (req, res) => {
+    res.render('login')
+})
+
 loginRouter.post('/register', async (req, res) => {
     console.log(req.body)
     let {username, password} = req.body

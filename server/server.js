@@ -5,12 +5,16 @@ import loginRouter from "./controllers/userController.js"
 import chatRouter from "./controllers/chatController.js"
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
+import { Server } from 'socket.io';
+
 
 const hostname = '127.0.0.1';
 const port = 3000;
 const app = express();
 const server = createServer(app);
+const io = new Server(server);
 
+// TODO
 // configure express session cookie here
 
 (async () => {
@@ -35,6 +39,14 @@ app.use(bodyParser.json())
 
 app.use('/', loginRouter);
 app.use('/', chatRouter);
+
+io.on('connection', (socket) => {
+  socket.on('newChat', (messageData) => {
+    io.emit('chatUpdate', messageData);
+  });
+})
+
+
 
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);

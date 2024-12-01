@@ -1,15 +1,11 @@
-// export const getChatPage = (req, res) => {
-//     res.render('chat', { messages: [], currentUser: "scoobydoo" });
-// };
-
-// export default {
-//     getChatPage
-// };
-
 import express from 'express';
 import chatModel from '../models/chatModel.js'
 
 const chatRouter = express.Router();
+
+chatRouter.get('/chat', (req, res) => {
+    res.render('chat', { messages:[], currentUser:"scoobydoo" })
+})
 
 chatRouter.post('/chats', async (req, res) => {
     try {

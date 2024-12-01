@@ -8,18 +8,18 @@ logInButton.addEventListener('click', async () => {
         const response = await fetch('/authenticate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: {
-                username: username,
-                password: password
-            }
+            body: JSON.stringify({
+                username: username.value,
+                password: password.value
+            })
         })
-        if (response.ok) {
-            //sessionStorage.setItem('username', username)
-            // render chat page
-        } else {
+        if (!response.ok) {
             const errorMessage = await response.json()
             alert(errorMessage)
+            //throw new Error(`Error logging in. status: ${response.status}`)
         }
+        //sessionStorage.setItem('username', username)
+        window.location.href = '/chat'
     } catch(error) {
         console.error('Login error:', error)
         alert('Login failed.')
@@ -31,19 +31,18 @@ registerButton.addEventListener('click', async () => {
         const response = await fetch('/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: {
-                username: username,
-                password: password
-            }
+            body: JSON.stringify({
+                username: username.value,
+                password: password.value
+            })
         })
-        if (response.ok) {
-            //sessionStorage.setItem('username', username)
-            // render chat page
-            
-        } else {
+        if (!response.ok) {
             const errorMessage = await response.json()
             alert(errorMessage)
+            //throw new Error(`Error registering! status: ${response.status}`)
         }
+        //sessionStorage.setItem('username', username)
+        window.location.href = '/chat'
     } catch(error) {
         console.error('Registration error:', error)
         alert('Registration failed.')
