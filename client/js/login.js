@@ -13,12 +13,12 @@ logInButton.addEventListener('click', async () => {
                 password: password.value
             })
         })
+        const credentials = await response.json()
         if (!response.ok) {
             const errorMessage = await response.json()
             alert(errorMessage)
-            //throw new Error(`Error logging in. status: ${response.status}`)
         }
-        //sessionStorage.setItem('username', username)
+        sessionStorage.setItem('username', username.value)
         window.location.href = '/chat'
     } catch(error) {
         console.error('Login error:', error)
@@ -39,9 +39,9 @@ registerButton.addEventListener('click', async () => {
         if (!response.ok) {
             const errorMessage = await response.json()
             alert(errorMessage)
-            //throw new Error(`Error registering! status: ${response.status}`)
         }
-        //sessionStorage.setItem('username', username)
+        const credentials = await response.json()
+        sessionStorage.setItem('username', username.value)
         window.location.href = '/chat'
     } catch(error) {
         console.error('Registration error:', error)

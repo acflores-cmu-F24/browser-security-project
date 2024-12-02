@@ -9,8 +9,7 @@ socket = io()
 document.addEventListener('DOMContentLoaded', renderChatRoom)
 
 function renderChatRoom() {
-    //const username = sessionStorage.getItem('username')
-    const username = "SCOOBY"
+    const username = sessionStorage.getItem('username')
 
     function formatTimestamp(isoString) {
         const date = new Date(isoString)
@@ -26,22 +25,17 @@ function renderChatRoom() {
 
     function renderMessage(chat) {
         const messageElement = document.createElement('div')
-        //messageElement.classList.add('message')
 
         const senderElement = document.createElement('div')
-        //senderElement.classList.add('sender')
         senderElement.textContent = `${chat.sender}`
 
         const textElement = document.createElement('div')
-        //messageElement.classList.add('message')
         textElement.textContent = chat.text
 
         const timestampElement = document.createElement('div')
-        //timestampElement.classList.add('time')
         timestampElement.textContent = formatTimestamp(chat.timestamp)
 
         const chatElementContainer = document.createElement('div')
-        //metaContainer.classList.add('meta')
         chatElementContainer.appendChild(senderElement)
         chatElementContainer.appendChild(textElement)
         chatElementContainer.appendChild(timestampElement)
@@ -66,11 +60,9 @@ function renderChatRoom() {
     }
 
     postButton.addEventListener('click', async () => {
-        //const sender = sessionStorage.getItem('username')
         const sender = username;
         const text = messageInput.value
         const timestamp = new Date().toISOString()
-        //const currentUser = usersList.find((user) => user.username === username)
 
         try {
             const response = await fetch('/chats', {
@@ -85,7 +77,6 @@ function renderChatRoom() {
             if (!response.ok) {
                 throw new Error(`Error persisting message. status: ${response.status}`)
             }
-            // TODO: Do I need to .value the text and timestamp in the socket message? 
             socket.emit('newChat',
                 {
                     sender: sender.toString(),
@@ -102,8 +93,7 @@ function renderChatRoom() {
 
     logOutButton.addEventListener('click', async () => {
         try {
-            //let username = sessionStorage.getItem('username')
-            let username = "SCOOBY"
+            let username = sessionStorage.getItem('username')
             if (username) {
                 sessionStorage.removeItem('username')
                 window.location.href = '/'
