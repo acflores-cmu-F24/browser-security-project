@@ -19,9 +19,9 @@ const io = new Server(server);
 
 (async () => {
   mongoose
-  .connect(`mongodb://localhost:27017/browsersecurity`)
-  .then(() => console.log("Successfully connect to MongoDB"))
-  .catch((error) => console.log("Failed to connect to MongoDB: ", error.message))
+    .connect(`mongodb://localhost:27017/browsersecurity`)
+    .then(() => console.log("Successfully connect to MongoDB"))
+    .catch((error) => console.log("Failed to connect to MongoDB: ", error.message))
 })();
 
 app.set('view engine', 'ejs');
@@ -48,6 +48,6 @@ io.on('connection', (socket) => {
 
 
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+server.listen(port, () => {
+  console.log(`Server running on port {port}`);
 });

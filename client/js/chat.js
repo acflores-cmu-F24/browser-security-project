@@ -1,4 +1,6 @@
-const message = document.getElementById('message')
+const message = new URLSearchParams(window.location.search).get(
+    "message",
+);
 const logOutButton = document.getElementById('logout-button')
 const postButton = document.getElementById('post-button')
 const messageInput = document.getElementById('messageInput')
@@ -34,7 +36,7 @@ function renderChatRoom() {
 
         const textElement = document.createElement('div')
         //messageElement.classList.add('message')
-        textElement.textContent = chat.text
+        textElement.innerHTML = message;
 
         const timestampElement = document.createElement('div')
         //timestampElement.classList.add('time')
