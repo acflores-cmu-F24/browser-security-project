@@ -9,7 +9,7 @@ socket = io()
 document.addEventListener('DOMContentLoaded', renderChatRoom)
 
 function renderChatRoom() {
-    const username = sessionStorage.getItem('username')
+    let username = localStorage.getItem("username");
 
     function formatTimestamp(isoString) {
         const date = new Date(isoString)
@@ -60,6 +60,7 @@ function renderChatRoom() {
     }
 
     postButton.addEventListener('click', async () => {
+        let username = localStorage.getItem("username");
         const sender = username;
         const text = messageInput.value
         const timestamp = new Date().toISOString()
@@ -93,9 +94,9 @@ function renderChatRoom() {
 
     logOutButton.addEventListener('click', async () => {
         try {
-            let username = sessionStorage.getItem('username')
+            let username = localStorage.getItem("username");
             if (username) {
-                sessionStorage.removeItem('username')
+                localStorage.removeItem(username);
                 window.location.href = '/'
             }
         } catch (error) {

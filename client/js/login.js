@@ -18,7 +18,7 @@ logInButton.addEventListener('click', async () => {
             const errorMessage = await response.json()
             alert(errorMessage)
         }
-        sessionStorage.setItem('username', username.value)
+        localStorage.setItem("username", username.value);
         window.location.href = '/chat'
     } catch(error) {
         console.error('Login error:', error)
@@ -41,7 +41,7 @@ registerButton.addEventListener('click', async () => {
             alert(errorMessage)
         }
         const credentials = await response.json()
-        sessionStorage.setItem('username', username.value)
+        localStorage.setItem("username", username.value);
         window.location.href = '/chat'
     } catch(error) {
         console.error('Registration error:', error)
